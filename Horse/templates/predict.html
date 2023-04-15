@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>The Jockey Club - Horse Prediction</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <style>
+        .container {
+          margin: 0 auto;
+          width: 50%;
+          text-align: center;
+          margin-top: 30px;
+        }
+
+        form {
+          display: inline-block;
+          text-align: left;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>The Jockey Club - Horse Prediction</h1>
+    <form action="/predict" method="POST">
+        <label for="speed">Speed:</label>
+        <input type="number" id="speed" name="speed" required><br><br>
+
+        <label for="stamina">Stamina:</label>
+        <input type="number" id="stamina" name="stamina" required><br><br>
+
+        <label for="power">Power:</label>
+        <input type="number" id="power" name="power" required><br><br>
+
+        <label for="guts">Guts:</label>
+        <input type="number" id="guts" name="guts" required><br><br>
+
+        <label for="knowledge">Knowledge:</label>
+        <input type="number" id="knowledge" name="knowledge" required><br><br>
+
+        <label for="proficient">Proficient:</label>
+        <select id="proficient" name="proficient" required>
+            <option value="1">Beginner</option>
+            <option value="2">Intermediate</option>
+            <option value="3">Expert</option>
+        </select><br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>The Jockey Club - Horse Prediction</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+    <style>
+        .container {
+          margin: 0 auto;
+          width: 50%;
+          text-align: center;
+          margin-top: 30px;
+        }
+
+        form {
+          display: inline-block;
+          text-align: left;
+        }
+
+        .progress-bar {
+          margin-top: 10px;
+          width: 100%;
+          height: 20px;
+          background-color: lightgray;
+        }
+
+        .win-bar {
+          height: 100%;
+          max-width: 100%;
+          background-color: red;
+          float: left;
+        }
+
+        .lose-bar {
+          height: 100%;
+          max-width: 100%;
+          background-color: blue;
+          float: left;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>The Jockey Club - Horse Prediction</h1>
+    <form action="/predict" method="POST">
+        <label for="speed">Speed:</label>
+        <input type="number" id="speed" name="speed" required value="{{ form_data.speed }}"><br><br>
+
+        <label for="stamina">Stamina:</label>
+        <input type="number" id="stamina" name="stamina" required value="{{ form_data.stamina }}"><br><br>
+
+        <label for="power">Power:</label>
+        <input type="number" id="power" name="power" required value="{{ form_data.power }}"><br><br>
+
+        <label for="guts">Guts:</label>
+        <input type="number" id="guts" name="guts" required value="{{ form_data.guts }}"><br><br>
+
+        <label for="knowledge">Knowledge:</label>
+        <input type="number" id="knowledge" name="knowledge" required value="{{ form_data.knowledge }}"><br><br>
+
+        <label for="proficient">Proficient:</label>
+        <select id="proficient" name="proficient" required onselect="{{ form_data.proficient }}">
+            {% if form_data.proficient ==1 %}
+                <option value="1" selected>Beginner</option>
+                <option value="2">Intermediate</option>
+                <option value="3">Expert</option>
+            {% elif form_data.proficient ==2 %}
+                <option value="1">Beginner</option>
+                <option value="2" selected>Intermediate</option>
+                <option value="3">Expert</option>
+            {% else %}
+                <option value="1">Beginner</option>
+                <option value="2">Intermediate</option>
+                <option value="3" selected>Expert</option>
+            {% endif %}
+        </select><br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+
+    <div class="result">
+        <h3>Prediction Result</h3>
+        <p>Winning Rate: {{ prediction.win_rate }}%</p>
+        <div class="progress-bar">
+            <div class="win-bar" style="width:{{ prediction.win_rate }}%; height: 20px;"></div>
+            <div class="lose-bar" style="width:{{ prediction.lose_rate }}%; height: 20px;"></div>
+        </div>
+        <p>Losing Rate: {{ prediction.lose_rate }}%</p>
+    </div>
+    <div>
+        <h3>Suggestion</h3>
+        <div>
+            {{ suggestion }}
+        </div>
+    </div>
+</div>
+</body>
+</html>
