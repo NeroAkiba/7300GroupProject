@@ -1,0 +1,1 @@
+To run this Project，you need to run the “app.py” first，and then open up the  “index.html” under “templates” directory.
